@@ -46,16 +46,16 @@ if (!inFrame && !navigator.userAgent.includes("Firefox") && store.get("ab") === 
 }
 
 const SplashT = [
-  "Over 8 Million Users since 2023",
-  "Fastest growing proxy server",
-  "Made by xBubbo",
-  "Check out discord.gg/interstellar :)",
-  "Thanks for using the site",
-  "Follow us on Tiktok (@useinterstellar)",
-  "Subscribe to us on YouTube (@unblocking)",
-  "Subscribe to my Youtube (@xbubbo)",
+  "Brr brr patapim 🌳",
+  "Il mio cappello è pieno di Slim",
+  "Big feet. Bigger proxy.",
+  "Stomp stomp, welcome to the forest",
+  "Certified Italian brainrot",
+  "Tung tung tung sahur approved",
+  "Tralalero tralala says hi 🦈",
+  "Bombardiro crocodilo flew over ✈️",
+  "Click Patapim for more brainrot",
   "Check out the settings page",
-  "Check out our Patreon (https://www.patreon.com/gointerstellar)",
 ];
 
 let SplashI = Math.floor(Math.random() * SplashT.length);
@@ -76,6 +76,7 @@ function cycleSplash() {
 
 paintSplash();
 SplashE.addEventListener("click", cycleSplash);
+document.querySelector(".patapim-mascot")?.addEventListener("click", cycleSplash);
 
 function getRandomUrl() {
   const randomUrls = [
@@ -103,7 +104,7 @@ function randRange(min, max) {
 (function buildHeading() {
   const heading = document.querySelector("h1.title");
   if (!heading) return;
-  const codes = [73, 110, 116, 101, 114, 115, 116, 101, 108, 108, 97, 114];
+  const codes = [66, 114, 114, 32, 66, 114, 114, 32, 80, 97, 116, 97, 112, 105, 109];
   const twins = { 116: "т", 101: "е", 115: "ѕ", 97: "а", 73: "І" };
   const invisible = ["​", "‌", "‍", "⁠"];
   const wrappers = ["span", "x-a", "x-b", "ab-x", "s-p", "n-a"];

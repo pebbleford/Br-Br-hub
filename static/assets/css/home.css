@@ -4,54 +4,79 @@
    align-items: center;
 }
 
+/* Split layout: words on the left, Patapim on the right */
+.main.home-split {
+   flex-direction: row;
+   justify-content: center;
+   gap: 6vw;
+   width: 100%;
+   min-height: 100vh;
+   padding: 70px 6vw 130px;
+   box-sizing: border-box;
+}
+
+.home-copy {
+   flex: 1 1 0;
+   max-width: 640px;
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+}
+
 .title {
-   font-size: 10vh;
-   color: var(--brand-text, var(--text));
-   font-family: "Inter", sans-serif;
-   text-align: center;
+   margin: 0 0 22px;
+   font-family: var(--font-display);
+   font-size: clamp(52px, 7.5vw, 116px);
+   font-weight: 900;
+   line-height: 0.92;
+   letter-spacing: 0.01em;
+   text-align: left;
    text-transform: uppercase;
-   border-radius: 0px 0px 5px 5px;
-   margin-top: 30vh;
-   margin-bottom: 3.5vh;
-   line-height: 1.1;
-   transition: var(--transition-slow);
-   text-shadow: 2px 4px 6px rgb(0, 0, 0, 0.2);
+   color: var(--brand-text, var(--accent-hover));
+   cursor: default;
+   -webkit-text-stroke: 0.08em var(--accent-text);
+   paint-order: stroke fill;
+   text-shadow:
+      0 0.07em 0 var(--accent-text),
+      0 0.14em 0.3em rgba(0, 0, 0, 0.35);
 }
 
 .title:hover {
-   transform: translateY(-2px) scale(1.05);
+   animation: patapimBrr 0.1s linear infinite;
 }
 
-@media (orientation: portrait) {
-   .title {
-      position: relative;
-      top: -10vw;
-      font-size: 10vw;
-      color: var(--brand-text, var(--text));
-      font-family: "Inter", sans-serif;
-      text-align: center;
-      text-transform: uppercase;
-      border-radius: 0px 0px 5px 5px;
+#splash {
+   margin: 0 0 26px;
+   padding: 0.4em 1.1em;
+   color: var(--text-muted);
+   background: var(--surface-nav-active);
+   border: 1px solid var(--border);
+   border-radius: 999px;
+   font-family: var(--font-body);
+   font-weight: 800;
+   cursor: pointer;
+   user-select: none;
+   animation: splashSwitch 0.35s ease;
+}
+
+@keyframes splashSwitch {
+   from {
+      opacity: 0;
+      transform: translateY(6px);
+   }
+   to {
+      opacity: 1;
+      transform: translateY(0);
    }
 }
 
 .search-container {
    display: flex;
    width: 100%;
-   text-align: center;
-   justify-content: center;
-   align-items: center;
 }
 
-.truncate {
-   width: 50vw;
-   height: 5vh;
-   font-family: "Poppins", sans-serif;
-   font-size: 16px;
-   box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.2);
-   background: var(--surface-input);
-   -webkit-backdrop-filter: var(--backdrop-filter);
-   backdrop-filter: var(--backdrop-filter);
+#search-form {
+   width: 100%;
 }
 
 input {
@@ -73,22 +98,186 @@ input:focus {
    border-color: var(--border-strong);
 }
 
-#splash {
-   color: var(--text-faint);
-   margin-bottom: 1em;
-   margin-top: -2em;
-   padding: 0;
-   font-family: "Poppins", sans-serif;
-   animation: splashSwitch 0.35s ease;
+.truncate {
+   width: 100%;
+   height: 66px;
+   box-sizing: border-box;
+   padding: 0 28px;
+   text-align: left;
+   font-family: var(--font-body);
+   font-size: 18px;
+   font-weight: 700;
+   border-radius: 999px;
+   border: 3px solid var(--border-strong);
+   box-shadow: 0 6px 0 rgba(0, 0, 0, 0.35);
+   background: var(--surface-input);
+   -webkit-backdrop-filter: var(--backdrop-filter);
+   backdrop-filter: var(--backdrop-filter);
 }
 
-@keyframes splashSwitch {
-   from {
-      opacity: 0;
-      transform: translateY(6px);
+.truncate:focus {
+   border-color: var(--accent);
+   box-shadow:
+      0 6px 0 rgba(0, 0, 0, 0.35),
+      0 0 0 6px color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+/* Patapim as a tilted poster */
+.home-art {
+   position: relative;
+   flex: none;
+}
+
+.patapim-mascot {
+   display: block;
+   width: min(30vw, 360px);
+   height: auto;
+   aspect-ratio: 1;
+   object-fit: cover;
+   padding: 0;
+   border: 12px solid #fbeedb;
+   border-radius: 26px;
+   box-shadow:
+      0 10px 0 var(--accent-text),
+      0 26px 50px rgba(0, 0, 0, 0.45);
+   cursor: pointer;
+   user-select: none;
+   animation: patapimFloat 4s ease-in-out infinite;
+}
+
+.patapim-mascot:hover {
+   animation: patapimBrr 0.12s linear infinite;
+}
+
+.home-art-sticker {
+   position: absolute;
+   top: -26px;
+   left: -30px;
+   display: grid;
+   place-items: center;
+   width: 96px;
+   height: 96px;
+   border-radius: 50%;
+   background: var(--accent-hover);
+   color: var(--accent-text);
+   border: 4px solid var(--accent-text);
+   font-family: var(--font-display);
+   font-size: 20px;
+   font-weight: 900;
+   line-height: 1;
+   text-align: center;
+   text-transform: uppercase;
+   transform: rotate(-14deg);
+   pointer-events: none;
+}
+
+@keyframes patapimFloat {
+   0%,
+   100% {
+      transform: rotate(4deg) translateY(0);
    }
+   50% {
+      transform: rotate(2deg) translateY(-12px);
+   }
+}
+
+@keyframes patapimBrr {
+   0%,
+   100% {
+      transform: translateX(0) rotate(3deg);
+   }
+   25% {
+      transform: translateX(-3px) rotate(1deg);
+   }
+   75% {
+      transform: translateX(3px) rotate(5deg);
+   }
+}
+
+/* Scrolling strip of brainrot names */
+.brainrot-ticker {
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   z-index: 100;
+   overflow: hidden;
+   background: var(--accent-hover);
+   border-bottom: 3px solid var(--accent-text);
+   color: var(--accent-text);
+   font-family: var(--font-display);
+   font-weight: 900;
+   font-size: 15px;
+   letter-spacing: 0.08em;
+   text-transform: uppercase;
+   white-space: nowrap;
+}
+
+.brainrot-ticker-track {
+   display: inline-flex;
+   padding: 9px 0;
+   animation: tickerScroll 28s linear infinite;
+}
+
+.brainrot-ticker-track span::after {
+   content: "✦";
+   margin: 0 22px;
+}
+
+@keyframes tickerScroll {
    to {
-      opacity: 1;
-      transform: translateY(0);
+      transform: translateX(-50%);
+   }
+}
+
+/* Stack on narrow screens, Patapim on top */
+@media (max-width: 860px) {
+   .main.home-split {
+      flex-direction: column;
+      gap: 34px;
+      padding: 80px 20px 130px;
+   }
+
+   .home-art {
+      order: -1;
+   }
+
+   .patapim-mascot {
+      width: min(58vw, 240px);
+   }
+
+   .home-art-sticker {
+      width: 70px;
+      height: 70px;
+      font-size: 15px;
+      top: -18px;
+      left: -22px;
+   }
+
+   .home-copy {
+      align-items: center;
+      width: 100%;
+   }
+
+   .title {
+      text-align: center;
+      font-size: clamp(40px, 12vw, 72px);
+   }
+
+   .truncate {
+      text-align: center;
+   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+   .patapim-mascot,
+   .patapim-mascot:hover,
+   .title:hover,
+   .brainrot-ticker-track {
+      animation: none;
+   }
+
+   .patapim-mascot {
+      transform: rotate(4deg);
    }
 }

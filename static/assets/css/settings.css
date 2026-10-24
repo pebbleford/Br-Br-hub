@@ -1,5 +1,5 @@
 body {
-   font-family: "Inter", sans-serif;
+   font-family: var(--font-body);
    color: var(--text);
    margin: 0;
    padding: 0;
@@ -10,7 +10,7 @@ body {
 .settings-shell {
    width: min(1320px, calc(100% - 32px));
    box-sizing: border-box;
-   padding: calc(10vh + 48px) 32px 60px 32px;
+   padding: 48px 32px 140px 32px;
    margin: 0 auto;
 }
 
@@ -34,9 +34,16 @@ body {
 .settings-group-title {
    margin: 0;
    padding: 22px 24px;
+   font-family: var(--font-display);
    font-size: 26px;
-   font-weight: 800;
-   color: var(--text);
+   font-weight: 900;
+   text-transform: uppercase;
+   letter-spacing: 0.03em;
+   color: var(--accent-hover);
+}
+
+.settings-group-title::before {
+   content: "🌿 ";
 }
 
 .settings-item {
@@ -185,8 +192,8 @@ body {
 }
 
 .bg-option.active {
-   border-color: var(--border-strong);
-   box-shadow: 0 0 0 2px var(--border-strong);
+   border-color: var(--accent);
+   box-shadow: 0 0 0 3px var(--accent);
 }
 
 .bg-option-preview {
@@ -210,10 +217,12 @@ body {
 
 .settings-card {
    background-color: var(--surface-card);
-   border: 1px solid var(--border);
+   border: 3px solid var(--border);
    border-radius: var(--radius-lg);
    padding: 24px;
-   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+   box-shadow:
+      0 6px 0 rgba(0, 0, 0, 0.35),
+      0 14px 28px rgba(0, 0, 0, 0.2);
    width: 100%;
    box-sizing: border-box;
    transition: var(--transition);
@@ -221,8 +230,10 @@ body {
 
 .settings-card:hover {
    transform: translatey(-5px);
-   border-color: var(--border-strong);
-   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.26);
+   border-color: var(--accent);
+   box-shadow:
+      0 6px 0 rgba(0, 0, 0, 0.35),
+      0 18px 32px rgba(0, 0, 0, 0.26);
 }
 
 .settings-card h3 {
@@ -243,8 +254,10 @@ input {
    border-radius: var(--radius-md);
    background: var(--surface-input);
    text-align: center;
+   font-family: var(--font-body);
    font-size: 20px;
-   border: 1px solid var(--border);
+   font-weight: 700;
+   border: 2px solid var(--border-strong);
    outline: none;
    color: var(--text);
    transition: var(--transition);
@@ -307,8 +320,10 @@ input:checked + .slider-round:before {
    border-radius: var(--radius-md);
    background: var(--surface-input);
    text-align: center;
+   font-family: var(--font-body);
    font-size: 20px;
-   border: 1px solid var(--border);
+   font-weight: 700;
+   border: 2px solid var(--border-strong);
    outline: none;
    color: var(--text);
    margin-top: 10px;
@@ -317,13 +332,16 @@ input:checked + .slider-round:before {
 
 .key-button {
    cursor: pointer;
-   border: 1px solid var(--border);
+   border: 3px solid var(--accent-text);
+   font-family: var(--font-body);
    font-size: 20px;
+   font-weight: 900;
    transition: var(--transition);
    margin-top: 10px;
-   background-color: var(--surface-button);
-   border-radius: var(--radius-md);
-   color: var(--text);
+   background-color: var(--accent);
+   border-radius: 999px;
+   box-shadow: 0 5px 0 var(--accent-text);
+   color: var(--accent-text);
    height: 50px;
    width: 50%;
    padding: 10px;
@@ -344,10 +362,19 @@ button {
    text-align: center;
 }
 
-.key-button:hover,
 button:hover {
    background-color: var(--surface-button-hover);
    border-color: var(--border-strong);
+}
+
+.key-button:hover {
+   background-color: var(--accent-hover);
+   transform: translateY(-2px);
+}
+
+.key-button:active {
+   transform: translateY(3px);
+   box-shadow: 0 2px 0 var(--accent-text);
 }
 
 select {
@@ -356,9 +383,12 @@ select {
    border-radius: var(--radius-md);
    background: var(--surface-button);
    color: var(--text);
+   font-family: var(--font-body);
    font-size: 20px;
-   border: 1px solid var(--border);
+   font-weight: 800;
+   border: 2px solid var(--border-strong);
    outline: none;
+   cursor: pointer;
    transition: var(--transition);
 }
 

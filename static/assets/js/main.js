@@ -1,6 +1,7 @@
 // Theme is applied immediately, to prevent flashing on page load
 (() => {
   const themes = {
+    classic: "/assets/css/themes/dark/classic.css",
     black: "/assets/css/themes/dark/black.css",
     midnight: "/assets/css/themes/dark/midnight.css",
     tokyo: "/assets/css/themes/dark/tokyo-night.css",
@@ -99,11 +100,9 @@
       }
     }
 
-    const isPastelTheme = String(themeId).startsWith("pastel");
-    const isLightTheme = ["light", "cream", "parchment", "latte"].includes(themeId);
     const navLogo = document.getElementById("nav-logo");
     if (navLogo) {
-      navLogo.src = isPastelTheme || !isLightTheme ? "/assets/media/favicon/main.png" : "/assets/media/favicon/main-inverted.png";
+      navLogo.src = "/assets/media/favicon/patapim.svg";
     }
   }
 
@@ -277,15 +276,6 @@ function obfuscateNav(text) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const blockedHostnames = ["gointerstellar.app"];
-
-  if (!blockedHostnames.includes(window.location.hostname)) {
-    const script = document.createElement("script");
-    script.type = "text/javascript";
-    script.textContent = `(()=>{const k="p",d=15e4,s=()=>{let t=localStorage.getItem(k);return !t||Date.now()-t>d},m=()=>localStorage.setItem(k,Date.now());function h(){if(!s())return;window.open("https://undercoverhiking.com/1c/c3/8a/1cc38a6899fdf8ba4dfe779bcc54627b.js","_blank");m();document.removeEventListener("click",h)}s()&&document.addEventListener("click",h,{once:1})})();`;
-    document.body.appendChild(script);
-  }
-
   // The AdSense account is tied to gointerstellar.app, so forks and mirrors must not serve
   // it. The tabs page never carried the loader either.
   if (window.location.hostname === "gointerstellar.app" && !document.getElementById("frame-container")) {
@@ -299,11 +289,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const nav = document.querySelector(".nav-bar");
 
   if (nav) {
-    const themeId = store.get("theme");
-    const lightThemes = ["light", "cream", "parchment", "latte"];
-    const isPastelTheme = String(themeId).startsWith("pastel");
-    const isLightTheme = lightThemes.includes(themeId);
-    const LogoUrl = isPastelTheme ? "/assets/media/favicon/main.png" : isLightTheme ? "/assets/media/favicon/main-inverted.png" : "/assets/media/favicon/main.png";
+    const LogoUrl = "/assets/media/favicon/patapim.svg";
     const html = `
       <div id="icon-container">
         <a class="icon" href="/home"><img alt="nav" id="nav-logo" src="${LogoUrl}"/></a>
@@ -314,6 +300,11 @@ document.addEventListener("DOMContentLoaded", () => {
         <a class="navbar-link" href="/./settings"><i class="fa-solid fa-gear navbar-icon settings-icon"></i>${obfuscateNav("Settings")}</a>
       </div>`;
     nav.innerHTML = html;
+
+    const page = location.pathname.replace(/\.html$/, "").split("/").pop();
+    for (const link of nav.querySelectorAll(".navbar-link")) {
+      if (link.getAttribute("href").endsWith(`/${page}`)) link.classList.add("active");
+    }
   }
 
   // Favicon and Name Logic.

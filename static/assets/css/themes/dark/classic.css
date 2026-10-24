@@ -1,0 +1,42 @@
+/* Classic (the original Interstellar default, before the Patapim redesign) */
+:root {
+   --background: #222;
+   --surface: #2a2a2a;
+   --surface-card: #2a2a2a;
+   --surface-tile: #353535;
+   --surface-raised: #3a3a3a;
+   --surface-overlay: #2e2e2e;
+   --surface-input: #353535;
+   --surface-button: #333;
+   --surface-button-hover: #3d3d3d;
+   --surface-hover: #3a3a3a;
+   --surface-active: #444;
+   --surface-nav: rgba(255, 255, 255, 0.02);
+   --surface-nav-active: rgba(255, 255, 255, 0.06);
+
+   --border: rgba(255, 255, 255, 0.08);
+   --border-subtle: rgba(255, 255, 255, 0.04);
+   --border-strong: rgba(255, 255, 255, 0.16);
+
+   --text: #fff;
+   --text-muted: #aaa;
+   --text-faint: #555;
+
+   --accent: #fff;
+   --accent-hover: #fff;
+   --accent-text: #111;
+
+   --success: #4caf50;
+   --warning: #ff9800;
+   --danger: #f44336;
+
+   --toggle-on: var(--success);
+   --toggle-off: #ccc;
+
+   --tab: #2a2a2a;
+   --tab-active: #444;
+   --tab-hover: #444;
+   --tab-border: transparent;
+
+   --background-image: none;
+}
