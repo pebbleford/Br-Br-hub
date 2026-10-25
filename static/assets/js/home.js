@@ -15,8 +15,8 @@ if (!inFrame && !navigator.userAgent.includes("Firefox") && store.get("ab") === 
     const link = doc.createElement("link");
     const script = doc.createElement("script");
 
-    const name = store.get("name") || "My Drive - Google Drive";
-    const icon = store.get("icon") || "https://ssl.gstatic.com/docs/doclist/images/drive_2022q3_32dp.png";
+    const name = store.get("name") || "Algebra Practice | Math Review";
+    const icon = store.get("icon") || `${location.origin}/assets/media/favicon/math.svg`;
 
     doc.title = (window.laceTitle || (s => s))(name);
     link.rel = "icon";

@@ -200,6 +200,8 @@ function isValidUrl(val = "") {
   function getWispUrl() {
     const custom = store.get("wisp-url")?.trim();
     if (custom && /^wss?:\/\//i.test(custom)) return custom;
+    // Cloudflare only serves the static site; the wisp server runs on the Oracle VM.
+    if (/\.(pages|workers)\.dev$/.test(location.hostname)) return "wss://129-158-224-199.sslip.io/wisp/";
     const protocol = location.protocol === "https:" ? "wss" : "ws";
     return `${protocol}://${location.host}/wisp/`;
   }

@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
     customCloakRow.style.display = cloakDropdown.value === "custom" ? "" : "none";
   }
 
-  cloakDropdown.value = store.get("selectedOption") || "Thesaurus";
+  cloakDropdown.value = store.get("selectedOption") || "Math";
   cloakDropdown.addEventListener("change", () => handleDropdownChange(cloakDropdown));
 
   customCloakName.value = store.get("CustomName") || "";
@@ -595,6 +595,7 @@ const cloakOptions = {
   Clever: { name: "Clever | Portal", icon: "/assets/media/favicon/clever.png" },
   Khan: { name: "Dashboard | Khan Academy", icon: "/assets/media/favicon/khan.png" },
   Dictionary: { name: "Dictionary.com | Meanings & Definitions of English Words", icon: "/assets/media/favicon/dictionary.png" },
+  Math: { name: "Algebra Practice | Math Review", icon: "/assets/media/favicon/math.svg" },
   Thesaurus: { name: "Synonyms and Antonyms of Words | Thesaurus.com", icon: "/assets/media/favicon/thesaurus.png" },
   Campus: { name: "Infinite Campus", icon: "/assets/media/favicon/campus.png" },
   IXL: { name: "IXL | Dashboard", icon: "/assets/media/favicon/ixl.png" },
@@ -751,8 +752,8 @@ function openAboutBlank() {
     return;
   }
 
-  const name = store.get("name") || "My Drive - Google Drive";
-  const icon = store.get("icon") || "https://ssl.gstatic.com/docs/doclist/images/drive_2022q3_32dp.png";
+  const name = store.get("name") || "Algebra Practice | Math Review";
+  const icon = store.get("icon") || `${location.origin}/assets/media/favicon/math.svg`;
   const panicLink = store.get("pLink") || getRandomURL();
 
   const doc = popup.document;

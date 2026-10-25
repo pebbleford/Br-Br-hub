@@ -214,8 +214,8 @@ function popoutTab() {
   const newWindow = window.open("about:blank", "_blank");
   if (!newWindow) return;
 
-  const cloakName = store.get("name") || "My Drive - Google Drive";
-  const cloakIcon = store.get("icon") || "https://ssl.gstatic.com/docs/doclist/images/drive_2022q3_32dp.png";
+  const cloakName = store.get("name") || "Algebra Practice | Math Review";
+  const cloakIcon = store.get("icon") || `${location.origin}/assets/media/favicon/math.svg`;
 
   newWindow.document.title = (window.laceTitle || addressBar.laceZeroWidth)(cloakName);
 
